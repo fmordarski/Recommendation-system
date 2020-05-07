@@ -1,4 +1,4 @@
-cd("C:/Users/Uzytkownik/Documents/Julia/praca/others")
+cd("C:/Users/Uzytkownik/Documents/Julia/praca/others/final")
 using Random,Recommendation,MLDataUtils,DataFrames, JSON, LazyJSON, Mmap, Statistics,Libdl,CSV,SparseArrays, Serialization
 using DataFramesMeta, Clustering
 using JLD2, FileIO
@@ -131,7 +131,7 @@ da_trains = Dict([(1, da_train_1), (2, da_train_2), (3, da_train_3),
 #steps = [10, 15, 20, 30, 40]
 #steps = [10, 50, 100, 500, 1000, 1500, 2000, 2500, 3000]
 is = [4, 5, 6]
-steps = [200, 300, 500, 700]
+steps = [250, 500, 1000, 2000]
 steps_initial = [10, 50, 100]
 steps_initial = vcat(steps_initial, steps)
 for i in is
@@ -151,10 +151,10 @@ for i in is
         user_id = vals[i].user_id[j]
         business_id = vals[i].business_id[j]
         if (user_id in collect(keys(mappings[i][1]))) & (business_id in collect(keys(mappings[i][2])))
-            vals[i].pred_1[j] = Recommendation.predict(recommenders_temp[200], mappings[i][1][user_id], mappings[i][2][business_id])
-            vals[i].pred_2[j] = Recommendation.predict(recommenders_temp[300], mappings[i][1][user_id], mappings[i][2][business_id])
-            vals[i].pred_3[j] = Recommendation.predict(recommenders_temp[500], mappings[i][1][user_id], mappings[i][2][business_id])
-            vals[i].pred_4[j] = Recommendation.predict(recommenders_temp[700], mappings[i][1][user_id], mappings[i][2][business_id])
+            vals[i].pred_1[j] = Recommendation.predict(recommenders_temp[250], mappings[i][1][user_id], mappings[i][2][business_id])
+            vals[i].pred_2[j] = Recommendation.predict(recommenders_temp[500], mappings[i][1][user_id], mappings[i][2][business_id])
+            vals[i].pred_3[j] = Recommendation.predict(recommenders_temp[1000], mappings[i][1][user_id], mappings[i][2][business_id])
+            vals[i].pred_4[j] = Recommendation.predict(recommenders_temp[2000], mappings[i][1][user_id], mappings[i][2][business_id])
             # vals[i].pred_5[j] = Recommendation.predict(recommenders_temp[300], mappings[i][1][user_id], mappings[i][2][business_id])
             # vals[i].pred_6[j] = Recommendation.predict(recommenders_temp[500], mappings[i][1][user_id], mappings[i][2][business_id])
             else

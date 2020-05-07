@@ -1,4 +1,4 @@
-cd("C:/Users/Uzytkownik/Documents/Julia/praca/others")
+cd("C:/Users/Uzytkownik/Documents/Julia/praca/others/final")
 using Random,Recommendation,MLDataUtils,DataFrames, JSON, LazyJSON, Mmap, Statistics,Libdl,CSV,SparseArrays, Serialization
 using DataFramesMeta, Clustering
 using JLD2, FileIO
@@ -150,7 +150,7 @@ print("  build model for set: 3  ")
 push!(recommenders, 3=>recommender)
 print("  4  zestaw")
 Random.seed!(1)
-recommender = MF(da_trains[4], 700)
+recommender = MF(da_trains[4], 100)
 build!(recommender, max_iter=500)
 print("  build model for set: 4  ")
 push!(recommenders, 4=>recommender)
@@ -162,7 +162,7 @@ print("  build model for set: 5  ")
 push!(recommenders, 5=>recommender)
 print("  6  zestaw")
 Random.seed!(1)
-recommender = MF(da_trains[6], 700)
+recommender = MF(da_trains[6], 500)
 build!(recommender, max_iter=500)
 print("  build model for set: 6  ")
 push!(recommenders, 6=>recommender)
